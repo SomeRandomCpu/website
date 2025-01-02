@@ -31,8 +31,8 @@ export default defineConfig({
         }
       },
       giscus: {
-        repository: 'louisescher/spectre',
-        repositoryId: 'R_kgDONjm3ig',
+        repository: 'SomeRandomCpu/website',
+        repositoryId: 'R_kgDONZgQTA',
         category: 'General',
         categoryId: 'DIC_kwDONjm3is4ClmBF',
         mapping: 'pathname',
