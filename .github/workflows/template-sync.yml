@@ -1,4 +1,4 @@
-name: Update from Template Repository
+name: Update Specific Changes from Template
 
 on:
   schedule:
@@ -6,19 +6,19 @@ on:
   workflow_dispatch: # Allows manual trigger
 
 permissions:
-  contents: write # Needed for pushing updates to the repo
-  pull-requests: write # Needed for opening pull requests
+  contents: write
+  pull-requests: write
 
 jobs:
-  update-template:
-    name: Sync Template Updates
+  update-template-feature:
+    name: Sync Specific Updates from Template
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Website Repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Fetch full history for accurate merging
+          fetch-depth: 0
 
       - name: Set Up Git
         run: |
@@ -30,37 +30,38 @@ jobs:
           git remote add template https://github.com/louisescher/spectre.git
           git fetch template main
 
-      - name: Create Update Branch
+      - name: Identify New Changes
+        id: check_updates
         run: |
-          git checkout -b update-from-template-$(date +%Y-%m-%d)
+          echo "Available commits from template:"
+          git log HEAD..template/main --oneline
+          echo "commit_list=$(git log HEAD..template/main --pretty=format:'%H' | tr '\n' ' ')" >> $GITHUB_ENV
 
-      - name: Merge Template Changes
-        id: merge
+      - name: Cherry-Pick New Changes
+        if: env.commit_list != ''
         run: |
-          git merge --no-commit --no-ff template/main || echo "Merge conflicts detected" > conflicts.txt
+          git checkout -b cherry-pick-template-$(date +%Y-%m-%d)
+          for commit in ${{ env.commit_list }}; do
+            echo "Cherry-picking $commit"
+            git cherry-pick --no-commit $commit || (echo "::error::Conflict detected while cherry-picking $commit" && exit 1)
+          done
 
-      - name: Handle Merge Conflicts
-        if: ${{ failure() }}
-        run: |
-          echo "::error::Merge conflicts detected. Please resolve manually."
-          exit 1
-
-      - name: Install Dependencies and Check Build
+      - name: Install Dependencies and Build Site
         run: |
           npm install
           npm run build
 
       - name: Commit and Push Changes
         run: |
-          git commit -m "Merge updates from louisescher/spectre template on $(date +%Y-%m-%d)" || echo "No changes to commit"
-          git push origin update-from-template-$(date +%Y-%m-%d)
+          git commit -m "Cherry-picked updates from louisescher/spectre on $(date +%Y-%m-%d)" || echo "No changes to commit"
+          git push origin cherry-pick-template-$(date +%Y-%m-%d)
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
-          title: "Update from Template Repository"
+          title: "Cherry-Pick Updates from Template Repository"
           body: |
-            Automated update from the [louisescher/spectre](https://github.com/louisescher/spectre) template repository.
+            Automated cherry-pick updates from the [louisescher/spectre](https://github.com/louisescher/spectre) template repository.
             Please review and test before merging.
-          branch: update-from-template-$(date +%Y-%m-%d)
+          branch: cherry-pick-template-$(date +%Y-%m-%d)
           delete-branch: true
