@@ -28,7 +28,7 @@ jobs:
       - name: Add Template Repository as Remote
         run: |
           git remote add template https://github.com/louisescher/spectre.git
-          git fetch template main
+          git fetch template master
 
       - name: Identify New Changes
         id: check_updates
@@ -38,7 +38,7 @@ jobs:
           echo "commit_list=$(git log HEAD..template/main --pretty=format:'%H' | tr '\n' ' ')" >> $GITHUB_ENV
 
       - name: Cherry-Pick New Changes
-        if: env.commit_list != ''
+        if: ${{ env.commit_list != '' }}
         run: |
           git checkout -b cherry-pick-template-$(date +%Y-%m-%d)
           for commit in ${{ env.commit_list }}; do
