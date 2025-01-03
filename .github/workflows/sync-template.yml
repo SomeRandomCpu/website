@@ -20,7 +20,7 @@ jobs:
       - name: Merge Changes from Template
         run: |
           git checkout main
-          git merge template/main --allow-unrelated-histories -m "Merge updates from template"
+          git merge template/master --allow-unrelated-histories -m "Merge updates from template"
 
       - name: Push Changes to Your Repo
         run: |
