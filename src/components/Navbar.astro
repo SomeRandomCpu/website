@@ -1,5 +1,6 @@
 ---
 import Icon from "./Icon.astro";
+import { name } from 'spectre:globals';
 
 const path = Astro.url.pathname;
 ---
@@ -7,7 +8,7 @@ const path = Astro.url.pathname;
 <script defer src="https://cloud.umami.is/script.js" data-website-id="16086169-84fd-463a-89d3-b1422a1af5f7"></script>
 
 <nav>
-  <a class="site-title" href="/">Duplicake.fyi</a>
+  <a class="site-title" href="/">{name}</a>
   <ul>
     <li>
       <a href="/blog" class:list={{ active: path === '/blog' }}>Blog</a>

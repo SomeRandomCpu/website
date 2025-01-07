@@ -262,6 +262,19 @@ export default defineConfig({
 
 After doing so, you can follow the [official guide](https://docs.astro.build/en/guides/deploy/github/) to deploy your site.
 
+When not using an adapter, make sure to set `export const prerender` to `true` in `src/pages/styles/giscus.ts` or to remove the file altogether if you don't provide a custom giscus theme yourself.
+Additionally, you need to update the `postbuild` script in your `package.json`:
+
+```jsonc title="package.json" ins={4} del={3}
+{
+  "scripts": {
+    "postbuild": "pagefind --site dist/client",
+    "postbuild": "pagefind --site dist",
+  },
+}
+
+```
+
 ## Modifying the theme
 
 As with all themes, you might wish to modify it. In terms of content, you should know where you can do that! If you want to modify the primary color for example, you can do so in the `src/styles/globals.css` file:
