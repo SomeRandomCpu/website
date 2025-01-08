@@ -16,7 +16,7 @@ export default defineConfig({
     mdx(),
     sitemap({
       customPages: ['https://status.duplicake.fyi'],
-    })
+    }),
     spectre({
       name: 'Duplicake',
       openGraph: {
