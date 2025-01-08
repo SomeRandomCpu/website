@@ -21,15 +21,16 @@ export default defineConfig({
       name: 'Duplicake',
       openGraph: {
         home: {
-          title: 'Hompage',
-          description: "The homepage of Duplicake's site."
+          title: "Duplicake's personal website - Homepage",
+          description: "The homepage of Duplicake's personal website. This website is Open Source, contains Umami Analytics, and is built with Astro.",
         },
         blog: {
-          title: 'Blog',
-          description: 'My Blog where I dump random stuff.'
+          title: "Duplicake's personal website website - Blog",
+          description: 'My Blog where I dump random stuff. This website is Open Source, contains Umami Analytics, and is built with Astro.'
         },
         projects: {
-          title: 'Projects'
+          title: "Duplicake's personal website - Projects",
+          description: 'My Projects. This website is Open Source, contains Umami Analytics, and is built with Astro.'
         }
       },
       giscus: {
