@@ -14,7 +14,9 @@ export default defineConfig({
   integrations: [
     expressiveCode(),
     mdx(),
-    sitemap(),
+    sitemap({
+      customPages: ['https://status.duplicake.fyi'],
+    })
     spectre({
       name: 'Duplicake',
       openGraph: {
