@@ -20,7 +20,7 @@ export default defineConfig({
       openGraph: {
         home: {
           title: 'Hompage',
-          description: 'The homepage of my website.'
+          description: "The homepage of Duplicake's site."
         },
         blog: {
           title: 'Blog',
