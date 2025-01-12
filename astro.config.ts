@@ -6,13 +6,16 @@ import sitemap from '@astrojs/sitemap';
 import spectre from './package/src';
 
 import node from '@astrojs/node';
+import { spectreDark } from './src/ec-theme';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://duplicake.fyi',
   output: 'static',
   integrations: [
-    expressiveCode(),
+    expressiveCode({
+      themes: [spectreDark],
+    }),
     mdx(),
     sitemap({
       customPages: ['https://status.duplicake.fyi'],

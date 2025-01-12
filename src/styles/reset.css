@@ -81,7 +81,6 @@ pre, pre *, code {
 }
 
 pre {
-  background: #202020 !important;
   border: 1px solid rgb(#353535);
   overflow-y: hidden;
   padding: .5rem;

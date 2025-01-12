@@ -67,12 +67,7 @@ main {
   border-radius: 0 !important;
 }
 
-.expressive-code .copy button {
-  background: #252525 !important;
-}
-
 .expressive-code figcaption {
-  background-color: #303030 !important;
   border: none !important;
   border-radius: 0 !important;
 }
@@ -82,7 +77,6 @@ main {
 }
 
 .expressive-code span.title:not(.is-terminal span.title) {
-  background-color: #353535 !important;
   border-radius: 0 !important;
 }
 
@@ -92,7 +86,6 @@ main {
 }
 
 .expressive-code .frame.has-title:not(.is-terminal) figcaption.header {
-  background: #282828 !important;
   border-radius: 0 !important;
 }
 

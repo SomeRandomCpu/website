@@ -285,3 +285,26 @@ As with all themes, you might wish to modify it. In terms of content, you should
 | `--primary-rgb` | RGB version of the primary color. | `140, 92, 245` |
 | `--primary-light` | Used for links. | `#a277ff` |
 | `--primary-lightest` | Used for links. | `#c2a8fd` |
+
+### Changing the code block colors
+
+Code snippets declared in `.md` and `.mdx` files are powered by [Expressive Code](https://expressive-code.com). By default, Spectre uses a variation of GitHub's dark theme with custom background colors. 
+
+If you want to change the colors of the code snippets (syntax highlighting, background color, etc.) you can provide your desired theme in the `astro.config.ts` file as such:
+
+```ts ins={8} del={1,7} title="astro.config.ts"
+import { spectreDark } from './src/ec-theme';
+// ...
+export default defineConfig({
+  // ...
+  integrations: [
+    expressiveCode({
+      themes: [spectreDark],
+      themes: ['catppuccin-mocha'],
+    }),
+    // ... 
+  ],
+  // ...
+});
+```
+You can find a list of available themes [on Expressive Code's website](https://expressive-code.com/guides/themes/).
