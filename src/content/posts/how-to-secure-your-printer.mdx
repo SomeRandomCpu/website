@@ -1,0 +1,82 @@
+---
+title: "How to secure your printer"
+description: "Find out how to secure your printer."
+image: "../assets/printer.png"
+createdAt: 08-16-2025
+draft: false
+tags:
+  - guide
+---
+
+## Introduction
+
+If you're seeing this, you've probably come from a sheet of paper that was automatically printed
+with a link to this blog post. This happened because an automated python script I wrote to automatically
+find exposed printers found yours and sent this message. Don't panic—I'm an ethical hacker and I won't
+do anything malicious with your printer. Instead, my goal is to show you how simple it is for outsiders
+to access an unsecured device like yours, and to give you the knowledge you need to lock it down.
+
+## Why is this a problem?
+
+Printers are often overlooked when it comes to security, but they are essentially small computers connected
+to your network. If left unsecured, anyone on the internet can:
+
+* **Print unwanted or malicious documents** - As you've seen, a stranger can easily push content to your printer.
+* **Access sensitive information** - Many printers cache jobs in memory or on internal storage. Documents you've printed
+  could potentially be recovered by someone who knows where to look.
+* **Compromise your network** - Printers run firmware, and just like any computer, that firmware can contain bugs.
+  Attackers can exploit vulnerabilities to gain a foothold inside your home or office network.
+* **Drain your resources** - Malicious actors can send hundreds of print jobs, wasting paper, ink, and money.
+* **Exploit weak configurations** - Features like open FTP, Telnet, or unsecured web interfaces make it easy for outsiders
+  to tamper with settings.
+* **Scale attacks** - An unsecured printer can even be recruited into a botnet, used for spam or denial-of-service attacks
+  against others on the internet.
+
+The key point: printers are not just appliances, they are network devices, and any network device that is exposed
+to the wider internet can be abused. What seems like a harmless issue (someone printing on your machine) is really
+a signal that your network has a hole in its defenses.
+
+## How to secure your printer
+
+Here are the steps you can take right now to secure your printer and prevent unwanted access:
+
+1. **Disable remote access** - Log into your router or your printer's web interface and ensure that external (WAN)
+   connections are blocked. Ideally, your printer should only respond to devices inside your home or office network.
+
+2. **Change default credentials** - Most printers come with predictable usernames and passwords like `admin/admin`.
+   Attackers scan for these constantly. Change your password to something strong and unique right away.
+
+3. **Update your printer's firmware** - Manufacturers release firmware updates to patch vulnerabilities. Visit the official
+   support page for your printer model and install the latest version.
+
+4. **Restrict network access** - If your router supports VLANs or guest networks, consider putting your printer on its own
+   segment. This limits what an attacker could access if they compromised the printer itself.
+
+5. **Disable unused services and protocols** - Many printers enable things like FTP, Telnet, or older network printing
+   protocols by default. If you don't use these, turn them off. Only keep what you need, such as modern secure printing
+   protocols.
+
+6. **Enable encryption where possible** - Some printers allow encrypted printing (via IPPS or HTTPS). If you have this
+   option, enable it to prevent others from snooping on your print jobs.
+
+7. **Use secure printing options** - Features like PIN-protected or “hold until released” printing ensure that documents
+   only print when you're physically at the device. This prevents sensitive information from being left in the tray.
+
+8. **Monitor printer logs and alerts** - Many network printers keep logs of who accessed them and what jobs were run.
+   Check these occasionally for suspicious activity, and enable email alerts if your printer supports them.
+
+9. **Physically secure the printer** - In shared spaces, restrict who can physically reach the printer. Someone with access
+   to the machine can sometimes pull memory cards, reset passwords, or otherwise tamper with it.
+
+10. **Consider turning it off when not needed** - If your printer is only used occasionally, switch it off or disconnect
+    it from the network when idle. An offline printer can't be hacked.
+
+## Conclusion
+
+Your printer may not seem like a prime target, but unsecured devices are low-hanging fruit for attackers.
+By following the steps above, you make your printer—and your entire network—far harder to abuse. The good
+news is that most of these fixes only take a few minutes, and once they're in place, you can use your printer
+confidently without worrying about outside interference.
+
+Security isn’t about making devices invulnerable; it's about making them a much less appealing target. Taking a little
+time today to secure your printer could save you a lot of frustration, wasted money, and potential data exposure later.
