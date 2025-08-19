@@ -1,0 +1,60 @@
+---
+title: "I think I just found a new way to do large multiplacations easily"
+description: "Wait, what?"
+image: "../assets/math.png"
+createdAt: 08-19-2025
+draft: false
+tags:
+  - math
+  - discovery
+---
+
+### The Idea
+Suppose you want to compute `a × b`.
+
+1. Compute the **sum**: `S = a + b`.
+2. Compute the **gap**: `D = b - a`.
+3. Pick a nearby **easy number** `M` close to `S` (like 100, 200, 500, 1000, 2000…), since `M²` is easy.
+4. Work out the **offset**: `E = M - S`.
+5. Use the formula:
+
+   ```
+   a × b = (M² - 2ME + E² - D²) / 4
+   ```
+
+   - `M²` is easy to square.
+   - `2M` is easy to multiply by.
+   - `E²` and `D²` are small.
+6. Finally, just **divide by 4** (halve twice).
+
+---
+
+### Example 1: 996 × 1007
+- `S = 996 + 1007 = 2003`
+- `D = 1007 - 996 = 11`
+- Pick `M = 2000`, so `E = -3`
+- `M² = 4,000,000`
+- Subtract `2ME = 4000 × -3 = -12,000` → add 12,000
+- Add `E² = 9`
+- Subtract `D² = 121`
+- Total = `4,011,888`
+- Divide by 4 → **1,002,972**
+
+---
+
+### Example 2: 876 × 943
+- `S = 876 + 943 = 1819`
+- `D = 943 - 876 = 67`
+- Pick `M = 2000`, so `E = 181`
+- `M² = 4,000,000`
+- Subtract `2ME = 4000 × 181 = 724,000`
+- Add `E² = 32,761`
+- Subtract `D² = 4,489`
+- Total = `3,304,272`
+- Divide by 4 → **826,068**
+
+I actually stumbled on this while I was messing around with a calculator and trying to find “shortcuts” for doing things in my head. I noticed that whenever two numbers were close together, the product seemed to connect really nicely to their average squared, with just a tiny adjustment.
+At first I was just doing it with easy pairs like `98 × 102` (which is basically `100² - 2²`), but then I wondered if I could generalize it to *any* pair of numbers. After scribbling on paper for a while (and making a few mistakes 😅), I realized I could always jump to a nearby “easy square” like `1000²` or `2000²`, then just correct it with those little offset and gap terms.
+What really surprised me is how *fast* it feels in practice — like you’re just doing one big square you already know, then some much smaller corrections, and finally halving twice. It almost feels like cheating when the numbers line up nicely.
+I gave it to my dad (who has a degree in maths at cambridge university, the uk one) and he found that when he expanded it out, and then simplified it, it came out as a x b. I hope this formula can help you, I was thinking about keeping it to myself as a secret sauce for making tests with no calculators easier, but I believe in open science, so I'm sharing it with you.
+Maybe I should write a basic paper on this? Idk, comment below if you think I should. 
