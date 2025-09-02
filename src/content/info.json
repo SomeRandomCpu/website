@@ -3,9 +3,9 @@
     "id": 1,
     "icon": {
       "type": "lucide",
-      "name": "cake"
+      "name": "vote"
     },
-    "text": "13 years old"
+    "text": "Green party"
   },
   {
     "id": 2,
@@ -13,6 +13,6 @@
       "type": "lucide",
       "name": "earth"
     },
-    "text": "UK"
+    "text": "UK, moving to Canada or Germany"
   }
 ]
